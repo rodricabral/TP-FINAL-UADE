@@ -11,7 +11,7 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:3002/api";
 
 function CatalogoProducto() {
-
+  const [imagenes, setImagenes] = useState([])
   const [catalogoList, setCatalogoList] = useState([]);
 
   
@@ -37,12 +37,14 @@ function CatalogoProducto() {
     }
   };
 
-  function visualizarImagen (arrayBuffer) {
+
+
+ function visualizarImagen (arrayBuffer) {
     
     const blob = new Blob([arrayBuffer], { type: 'image/jpg' }); 
     console.log(blob)
     return URL.createObjectURL(blob);
-  }
+  } 
 
   return (
     <div className="container">
@@ -73,6 +75,7 @@ function CatalogoProducto() {
                   </>
                 }
                 header={
+                  
                   <img
                     src={visualizarImagen(item.fotoProducto)}
                     alt={item.nombre}

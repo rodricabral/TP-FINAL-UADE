@@ -16,6 +16,7 @@ const pedidoroutes= require('./routes/pedidoRoute');
 const PORT = 3002;
 
 app.use('/api/proveedor',proveedorroutes)
+app.use('/uploads', express.static('uploads'));
 app.use('/api/cliente',clienteroutes)
 app.use('/api/producto',productoroutes)
 app.use('/api/pedido',pedidoroutes)
