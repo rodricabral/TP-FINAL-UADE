@@ -7,6 +7,7 @@ import Producto from "./componentes/Producto";
 import Pedido from "./componentes/Pedido";
 import Cliente from "./componentes/Cliente";
 import Catalogo from "./componentes/Catalogo";
+import Reportes from "./componentes/Reportes"
 import { Auth } from "./componentes/Auth";
 
 
@@ -71,6 +72,15 @@ function App() {
                 <ProtectedRoute>
                   <Navbar />
                   <Pedido></Pedido>
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/reportes"
+              element={
+                <ProtectedRoute>
+                  <Navbar />
+                  <Reportes></Reportes>
                 </ProtectedRoute>
               }
             ></Route>
