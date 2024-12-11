@@ -21,6 +21,9 @@ function Navbar() {
         <Link className="navbar Link me-3" to="/pedido">
           Pedido
         </Link>
+        <Link className="navbar Link me-3" to="/reporte">
+          Reporte
+        </Link>
       </nav>
     </div>
   );

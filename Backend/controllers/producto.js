@@ -4,7 +4,7 @@ const fs= require('fs')
 
 
 function getAllProductos(req,res){
-    const query = "SELECT * FROM producto"
+    const query = "SELECT * FROM productos"
 
     connection.query(query,(err,result)=>{
         if (err){
@@ -20,7 +20,7 @@ function createProducto(req,res) {
     
     const {id, nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra} = req.body
     const fotoProducto = req.file
-    const query = "INSERT INTO producto (id, nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra,fotoProducto) VALUES (?,?,?,?,?,?,?,?)"
+    const query = "INSERT INTO productos (id, nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra,fotoProducto) VALUES (?,?,?,?,?,?,?,?)"
 
     connection.query(query, [id, nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra,fotoProducto], (err,result)=>{
         if (err) {
@@ -39,7 +39,7 @@ function updateProducto(req,res) {
 
     const values= [nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra, id];
     
-    const query = "UPDATE producto SET nombre=?, nombreComercial=?,seleccion=?,precioVenta=?,proveedor=?,precioCompra=?, fotoProducto=? WHERE id=?";
+    const query = "UPDATE productos SET nombre=?, nombreComercial=?,seleccion=?,precioVenta=?,proveedor=?,precioCompra=?, fotoProducto=? WHERE id=?";
     connection.query(query, [nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra, fotoProducto, id], (err,result)=>{
         if (err) {
             console.error(err)
@@ -53,7 +53,7 @@ function updateProducto(req,res) {
 function getProductoById(req,res) {
     const productoId = req.params.id
 
-    const query= "SELECT * FROM producto WHERE id = ?"
+    const query= "SELECT * FROM productos WHERE id = ?"
 
     connection.query(query, [productoId], (err,result)=>{
         if (err) {
@@ -68,7 +68,7 @@ function getProductoById(req,res) {
 function deleteProducto(req,res) {
     const productoId= req.params.id
 
-    const query= "DELETE FROM producto WHERE id=?"
+    const query= "DELETE FROM productos WHERE id=?"
 
     connection.query(query, [productoId], (err, result) => {
         if(err){

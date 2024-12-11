@@ -76,7 +76,7 @@ function App() {
               }
             ></Route>
             <Route
-              path="/reportes"
+              path="/reporte"
               element={
                 <ProtectedRoute>
                   <Navbar />
