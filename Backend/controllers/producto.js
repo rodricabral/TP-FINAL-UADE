@@ -3,7 +3,7 @@ const connection = require("../connectDB/dBconnection");
 const fs = require("fs");
 
 function getAllProductos(req, res) {
-  const query = "SELECT * FROM productos";
+  const query = "SELECT * FROM producto";
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -27,7 +27,7 @@ function createProducto(req, res) {
   } = req.body;
   const fotoProducto = req.file;
   const query =
-    "INSERT INTO productos (id, nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra,fotoProducto) VALUES (?,?,?,?,?,?,?,?)";
+    "INSERT INTO producto (id, nombre, nombreComercial,seleccion,precioVenta,proveedor,precioCompra,fotoProducto) VALUES (?,?,?,?,?,?,?,?)";
 
   connection.query(
     query,
@@ -75,7 +75,7 @@ function updateProducto(req, res) {
   ];
 
   const query =
-    "UPDATE productos SET nombre=?, nombreComercial=?,seleccion=?,precioVenta=?,proveedor=?,precioCompra=?, fotoProducto=? WHERE id=?";
+    "UPDATE producto SET nombre=?, nombreComercial=?,seleccion=?,precioVenta=?,proveedor=?,precioCompra=?, fotoProducto=? WHERE id=?";
   connection.query(
     query,
     [
@@ -102,7 +102,7 @@ function updateProducto(req, res) {
 function getProductoById(req, res) {
   const productoId = req.params.id;
 
-  const query = "SELECT * FROM productos WHERE id = ?";
+  const query = "SELECT * FROM producto WHERE id = ?";
 
   connection.query(query, [productoId], (err, result) => {
     if (err) {
@@ -117,7 +117,7 @@ function getProductoById(req, res) {
 function deleteProducto(req, res) {
   const productoId = req.params.id;
 
-  const query = "DELETE FROM productos WHERE id=?";
+  const query = "DELETE FROM producto WHERE id=?";
 
   connection.query(query, [productoId], (err, result) => {
     if (err) {

@@ -10,7 +10,7 @@ app.use(express.json());
 const proveedorroutes= require('./routes/proveedorRoute');
 const clienteroutes= require('./routes/clienteRoute');
 const productoroutes= require('./routes/productoRoute');
-const pedidoroutes= require('./routes/pedidoRoute');
+/* const pedidoroutes= require('./routes/pedidoRoute'); */
 
 
 const PORT = 3002;
@@ -19,7 +19,7 @@ app.use('/api/proveedor',proveedorroutes)
 app.use('/uploads', express.static('uploads'));
 app.use('/api/cliente',clienteroutes)
 app.use('/api/producto',productoroutes)
-app.use('/api/pedido',pedidoroutes)
+/* app.use('/api/pedido',pedidoroutes) */
 
 var admin = require("firebase-admin");
 

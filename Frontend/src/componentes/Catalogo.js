@@ -11,15 +11,32 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:3002/api";
 
 function CatalogoProducto() {
-  const [imagenes, setImagenes] = useState([])
+  const [imagen, setImagen] = useState([])
   const [catalogoList, setCatalogoList] = useState([]);
 
+  /* const fetchImagenes = async () => {
+
+      const res = await fetch(`${API_BASE_URL}/producto/el-producto`);
+      const data = await res.json();
+
+      const promises = data.map(async(imagens)=>{
+        const res = await fetch(imagens.fotoProducto)
+        const data = await res.json()
+
+        return data
+      })
+      const results = await Promise.all(promises)
+
+      console.log(results)
+
+  } */
   
   const fetchProductos = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/producto/el-producto`);
-      console.log(response.data)
-      setCatalogoList(response.data);
+      const { data } = await axios.get(`${API_BASE_URL}/producto/el-producto`);
+      console.log(data)
+      setCatalogoList(data);
+  
     } catch (error) {
       console.error("Error fetching productos:", error);
     }
@@ -27,24 +44,18 @@ function CatalogoProducto() {
 
   useEffect(() => {
     fetchProductos();
+    /* fetchImagenes() */
   }, []);
 
   const eliminarProducto = async (id) => {
     try {
       await axios.delete(`${API_BASE_URL}/producto/eliminar/${id}`);
+      fetchProductos()
     } catch (error) {
       console.error("Error eliminando producto:", error);
     }
   };
 
-
-
- function visualizarImagen (arrayBuffer) {
-    
-    const blob = new Blob([arrayBuffer], { type: 'image/jpg' }); 
-    console.log(blob)
-    return URL.createObjectURL(blob);
-  } 
 
   return (
     <div className="container">
@@ -77,7 +88,7 @@ function CatalogoProducto() {
                 header={
                   
                   <img
-                    src={visualizarImagen(item.fotoProducto)}
+                    src={`http://localhost:3002/uploads${item.fotoProducto}`}
                     alt={item.nombre}
                     style={{
                       width: "100%",
