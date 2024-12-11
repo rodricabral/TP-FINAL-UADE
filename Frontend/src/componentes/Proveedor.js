@@ -106,14 +106,14 @@ function Proveedor() {
             <div className="input-group mb-3 bg-dark p-2 text-white bg-opacity-75">
               <label className="input-group-text" htmlFor="nombre">Nombre</label>
               <input className="form-control" id="nombre" type="text" value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                onChange={(e) => setNombre(e.target.value)} placeholder='Ingrese el nombre del Proveedor'
                 required
               />
             </div>
             <div className="input-group mb-3 bg-dark p-2 text-white bg-opacity-75">
               <label className="input-group-text" htmlFor="cuit">Cuit</label>
               <input className="form-control" id="cuit" type="text" value={cuit}
-                onChange={(e) => setCuit(e.target.value)}
+                onChange={(e) => setCuit(e.target.value)} placeholder='Ingrese el cuit del Proveedor'
                 required
               />
             </div>
