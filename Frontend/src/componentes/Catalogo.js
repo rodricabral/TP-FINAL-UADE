@@ -14,7 +14,7 @@ function CatalogoProducto() {
 
   const [catalogoList, setCatalogoList] = useState([]);
 
-  // Función para obtener productos
+  
   const fetchProductos = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/producto/el-producto`);
@@ -39,7 +39,7 @@ function CatalogoProducto() {
 
   function visualizarImagen (arrayBuffer) {
     
-    const blob = new Blob([arrayBuffer], { type: 'image/jpg' }); // Ajusta el tipo según tu imagen
+    const blob = new Blob([arrayBuffer], { type: 'image/jpg' }); 
     console.log(blob)
     return URL.createObjectURL(blob);
   }
@@ -63,7 +63,7 @@ function CatalogoProducto() {
                       label="Eliminar"
                       severity="danger"
                       icon="pi pi-times"
-                      onClick={() => eliminarProducto(item.id)} // Asegúrate de que "id" esté presente
+                      onClick={() => eliminarProducto(item.id)} 
                     />
                     <Button
                       label="Agregar"

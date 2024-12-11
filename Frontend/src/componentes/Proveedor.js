@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../componentes/estilos.css"; // Si tienes estilos personalizados
+import "../componentes/estilos.css"; 
 
 function Proveedor() {
   const [id, setId] = useState("");
@@ -9,39 +9,39 @@ function Proveedor() {
   const [cuit, setCuit] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [proveedorList, setProveedorList] = useState([]); // Lista de proveedores
+  const [proveedorList, setProveedorList] = useState([]); 
 
-  // Función para cargar la lista de proveedores
+ 
   const fetchProveedorList = async () => {
     try {
       const response = await fetch("http://localhost:3002/api/proveedor/el-proveedor");
       const data = await response.json();
-      setProveedorList(data); // Actualiza la lista de proveedores
+      setProveedorList(data); 
     } catch (error) {
       console.error("Error al cargar los proveedores", error);
     }
   };
 
-  // Cargar la lista de proveedores cuando el componente se monta
+  
   useEffect(() => {
     fetchProveedorList();
   }, []);
 
-  // Función para manejar la validación y envío del formulario
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validación adicional antes de enviar los datos
+    
     if (!nombre || !cuit) {
       alert("Por favor, complete ambos campos: nombre y cuit.");
-      return; // Salir si hay campos vacíos
+      return; 
     }
 
-    // Crear el objeto de datos para enviar
+    
     const formData = { nombre, cuit };
 
     if (editMode) {
-      // Actualizar en el modo de edición
+      
       const updatedList = proveedorList.map((item, index) =>
         index === editingIndex ? { ...item, nombre, cuit } : item
       );
@@ -49,7 +49,7 @@ function Proveedor() {
       setEditMode(false);
       setEditingIndex(null);
     } else {
-      // Enviar los datos al servidor
+      
       try {
         await axios.post("http://localhost:3002/api/proveedor/guardar", formData, {
           headers: {
@@ -57,7 +57,7 @@ function Proveedor() {
           },
         });
         alert("Proveedor guardado con éxito");
-        fetchProveedorList(); // Recargar la lista de proveedores
+        fetchProveedorList(); 
       } catch (error) {
         console.error("Error al guardar el proveedor", error);
         alert("Hubo un error al guardar el proveedor");
@@ -67,16 +67,16 @@ function Proveedor() {
     limpiarCampos();
   };
 
-  // Función para editar un proveedor
+  
   const handleEdit = (proveedor) => {
-    setId(proveedor.id); // Asegúrate de que el id sea el correcto
+    setId(proveedor.id); 
     setNombre(proveedor.nombre);
     setCuit(proveedor.cuit);
-    setEditMode(true); // Habilitar el modo de edición
-    setEditingIndex(proveedor.id); // Establecer el índice del proveedor a editar
+    setEditMode(true); 
+    setEditingIndex(proveedor.id); 
   };
 
-  // Función para limpiar los campos
+  
   const limpiarCampos = () => {
     setId("");
     setNombre("");
@@ -84,7 +84,7 @@ function Proveedor() {
     setEditMode(false);
   };
 
-  // Función para actualizar un proveedor
+  
   const updateProveedor = async () => {
     try {
       await axios.put(`http://localhost:3002/api/proveedor/modificar-proveedor/${id}`, {
@@ -93,19 +93,18 @@ function Proveedor() {
         cuit: cuit,
       });
       alert("Datos actualizados con éxito");
-      fetchProveedorList(); // Recargar la lista después de la actualización
+      fetchProveedorList(); 
       limpiarCampos();
     } catch (error) {
       console.error("Error al actualizar el proveedor", error);
     }
   };
 
-  // Función para eliminar un proveedor
   const eliminarProveedor = async (id) => {
     try {
       await axios.delete(`http://localhost:3002/api/proveedor/eliminar/${id}`);
       setProveedorList(proveedorList.filter((proveedor) => proveedor.id !== id));
-      fetchProveedorList(); // Recargar la lista después de eliminar
+      fetchProveedorList(); 
       alert("Proveedor eliminado con éxito");
     } catch (error) {
       console.error("Error al eliminar el proveedor", error);

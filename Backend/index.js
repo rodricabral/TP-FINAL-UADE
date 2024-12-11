@@ -6,7 +6,7 @@ app.use(cors());
 
 app.use(express.json());
 
-//LLAMAR A LA RUTAS
+
 const proveedorroutes= require('./routes/proveedorRoute');
 const clienteroutes= require('./routes/clienteRoute');
 const productoroutes= require('./routes/productoRoute');

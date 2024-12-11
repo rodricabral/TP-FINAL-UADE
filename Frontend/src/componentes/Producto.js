@@ -11,7 +11,7 @@ function Producto(){
   const [precioVenta, setPrecioVenta] = useState("");
   const [proveedor, setProveedor] = useState("");
   const [precioCompra, setPrecioCompra] = useState("");
-  const [fotoProducto, setFotoProducto] = useState(null); // Estado para la imagen
+  const [fotoProducto, setFotoProducto] = useState(null); 
     const [proveedores, setProveedores] = useState([]);
 
     const [editMode, setEditMode] = useState(false);
@@ -24,7 +24,7 @@ function Producto(){
     }, []);
 
     const handleImageChange = (e) => {
-      setFotoProducto(e.target.files[0]); // Guardar el archivo de imagen en el estado
+      setFotoProducto(e.target.files[0]); 
     };
 
 
@@ -110,7 +110,7 @@ function Producto(){
   };
   
 
-  //LISTADO DE PRODUCTOS
+  
   const [productoInfoList, setProductoInfoList] = useState([]);
 
   const fetchData = async () => {
@@ -332,40 +332,6 @@ function Producto(){
         </table>
       </div>
 
-    
-  
-{/* <div className="container">
-  <div className="row">
-      {productoInfoList.map((producto) => (
-        <div key={producto.id} className="mx-1 m-3 col-3 card">
-          <img
-            src={`ruta/a/las/imagenes/${producto.fotoProducto}.jpg`} // Cambia la ruta según tus necesidades
-            alt={`Producto ${producto.id}`}
-            className="producto-image"
-          />
-          <div className="card-info">
-            <h3 className="text-title center">{producto.nombreComercial}</h3>
-            <p className="producto-description">{producto.nombre}</p>
-            <p><strong>Proveedor:</strong> {producto.proveedor}</p>
-            <p><strong>Precio Venta:</strong> ${producto.precioVenta}</p>
-            <p><strong>Precio Compra:</strong> ${producto.precioCompra}</p>
-            <p><strong>Selección:</strong> {producto.seleccion}</p>
-            <button type="button" className="btn btn-info"
-                          onClick={() => handleEdit(producto)}>
-                            Update
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-danger"
-                            onClick={() => eliminarProductoInfo(producto.id)}
-                          >
-                            Delete
-                          </button>
-          </div>
-        </div>
-      ))}
-      </div>
-    </div> */}
 
         
     </div>

@@ -2,7 +2,6 @@ import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-//import  '../componentes/estilos.css';
 
 export const Exit = () => {
   const navigate = useNavigate();

@@ -78,7 +78,7 @@ function Pedido() {
       axios
         .put("http://localhost:3002/pedido/" + pedidoForm.id, pedidoForm)
         .then((response) => {
-          console.log("Respuesta PUT:", response); // Imprime la respuesta completa
+          console.log("Respuesta PUT:", response); 
           setProductDialog(false);
           //getProveedores();
           toast.current.show({
@@ -101,7 +101,7 @@ function Pedido() {
       axios
         .post("http://localhost:3002/pedido", pedidoForm)
         .then((response) => {
-          console.log("Respuesta POST:", response); // Imprime la respuesta completa
+          console.log("Respuesta POST:", response); 
           setProductDialog(false);
           //getProveedores();
           toast.current.show({
@@ -196,19 +196,7 @@ function Pedido() {
       </React.Fragment>
     );
   };
-  //LISTADO DE Proveedores
-  /*  const [proveedorList, setProveedorList] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "http://localhost:3001/api/proveedor/el-proveedor"
-      );
-      const data = await response.json();
-      setProveedorList(data);
-    };
-    fetchData();
-  }, []); */
+ 
 
   const eliminarProveedor = (id) => {
     axios
@@ -364,7 +352,6 @@ function Pedido() {
 
       <div>
       <Toast ref={toast} />
-      {/* Tu contenido aquí */}
     </div>
     </div>
   );

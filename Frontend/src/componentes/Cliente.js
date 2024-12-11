@@ -14,7 +14,7 @@ function Cliente() {
 
   const [visible, setVisible] = useState(false);
 
-  // Traer lista de clientes
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,7 +27,7 @@ function Cliente() {
     fetchData();
   }, []);
 
-  // Añadir cliente con formulario
+  
   const handleAddCliente = async (e) => {
     e.preventDefault();
     try {
@@ -40,7 +40,7 @@ function Cliente() {
     }
   };
 
-  // Editar cliente en pop up
+  
   const handleEditCliente = async () => {
     try {
       await axios.put(`http://localhost:3002/api/cliente/modificar-cliente/${id}`, {
@@ -57,7 +57,7 @@ function Cliente() {
     }
   };
 
-  // Eliminar cliente
+ 
   const handleEliminarCliente = async () => {
     try {
       await axios.delete(`http://localhost:3002/api/cliente/eliminar/${id}`);
@@ -70,7 +70,7 @@ function Cliente() {
     }
   };
 
-  // Actualizar
+ 
   const actualizarLista = async () => {
     try {
       const response = await axios.get("http://localhost:3002/api/cliente/usuarios");
@@ -100,7 +100,7 @@ function Cliente() {
           <h2>Datos de los Clientes</h2>
         </div>
         <div className="card-body">
-          {/* Formulario para agregar clientes */}
+          
           <form onSubmit={handleAddCliente}>
             <div className="input-group mb-3">
               <span className="input-group-text">Nombre</span>
@@ -151,7 +151,7 @@ function Cliente() {
         </table>
       </div>
 
-      {/* Pop up para editar o eliminar cliente */}
+      
       <Dialog className="dialog" header="Editar Cliente" visible={visible} style={{ width: "50vw" }} onHide={() => setVisible(false)}>
         <form>
           <div className="input-group mb-3">

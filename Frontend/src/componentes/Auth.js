@@ -44,12 +44,4 @@ export const Auth = () => {
   );
 };
 
-/*
 
-    <div className="d-flex justify-content-center align-item-center">
-      <h1>Auth</h1>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
-
-      <button onClick={logout}>Log out</button>
-    </div>
-    */
